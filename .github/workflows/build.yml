@@ -24,8 +24,20 @@ jobs:
     - name: Setup Android SDK
       uses: android-actions/setup-android@v3
       
+    - name: Verify Android SDK
+      run: |
+        echo "ANDROID_HOME: $ANDROID_HOME"
+        echo "ANDROID_SDK_ROOT: $ANDROID_SDK_ROOT"
+        ls -la $ANDROID_HOME || echo "ANDROID_HOME not set"
+        ls -la $ANDROID_SDK_ROOT || echo "ANDROID_SDK_ROOT not set"
+      
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
+      
+    - name: Verify Gradle Wrapper
+      run: |
+        ls -la gradle/wrapper/ || echo "Gradle wrapper directory not found"
+        test -f gradle/wrapper/gradle-wrapper.jar && echo "gradle-wrapper.jar exists" || echo "gradle-wrapper.jar NOT FOUND"
       
     - name: Cache Gradle dependencies
       uses: actions/cache@v3
