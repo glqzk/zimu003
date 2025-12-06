@@ -66,7 +66,7 @@ chmod +x gradlew
 
 ## 技术栈
 
-- Java
+- **Kotlin** - 现代 Android 开发语言
 - Android SDK
 - GridLayout
 - Material Design Components
